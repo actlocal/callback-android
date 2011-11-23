@@ -722,7 +722,7 @@ public class DroidGap extends PhonegapActivity {
         this.appView.loadUrl("javascript:try{PhoneGap.onPause.fire();}catch(e){};"); 
 
         // Forward to plugins
-        this.pluginManager.onPause(this.keepRunning);
+//ALM        this.pluginManager.onPause(this.keepRunning);
 
         // If app doesn't want to run in background
         if (!this.keepRunning) {
@@ -1336,16 +1336,17 @@ public class DroidGap extends PhonegapActivity {
             if (appView.getVisibility() == View.INVISIBLE) {
                 Thread t = new Thread(new Runnable() {
                     public void run() {
-                        try {
-                            Thread.sleep(2000);
+//                        try {
+//                            Thread.sleep(2000);
+//                            LOG.d("Silly silly silly");
                             ctx.runOnUiThread(new Runnable() {
                                 public void run() {
                                     appView.setVisibility(View.VISIBLE);
                                     ctx.spinnerStop();
                                 }
                             });
-                        } catch (InterruptedException e) {
-                        }
+  //                      } catch (InterruptedException e) {
+  //                      }
                     }
                 });
                 t.start();
@@ -1657,13 +1658,13 @@ public class DroidGap extends PhonegapActivity {
                 // gone away.
                 else if (height > oldHeight) {
                     LOG.v(TAG, "Throw hide keyboard event");
-                    callbackServer.sendJavascript("PhoneGap.fireDocumentEvent('hidekeyboard');");
+//ALM                    callbackServer.sendJavascript("PhoneGap.fireDocumentEvent('hidekeyboard');");
                 } 
                 // If the height as gotten smaller then we will assume the soft keyboard has 
                 // been displayed.
                 else if (height < oldHeight) {
                     LOG.v(TAG, "Throw show keyboard event");
-                    callbackServer.sendJavascript("PhoneGap.fireDocumentEvent('showkeyboard');");
+//ALM                    callbackServer.sendJavascript("PhoneGap.fireDocumentEvent('showkeyboard');");
                 }
 
                 // Update the old height for the next event
